@@ -70,7 +70,7 @@ const AdminLogin = () => {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="admin@tastetrack.com"
+                placeholder="admin@eat2day.com"
                 required
                 disabled={isLoading}
               />
@@ -93,7 +93,7 @@ const AdminLogin = () => {
           
           <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
-              Default credentials: admin@tastetrack.com / password
+              Default credentials: admin@eat2day.com / password
             </p>
           </div>
         </CardContent>

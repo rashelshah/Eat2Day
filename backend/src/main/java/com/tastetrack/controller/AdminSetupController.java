@@ -45,7 +45,7 @@ public class AdminSetupController {
         
         try {
             // Check if admin already exists
-            Optional<User> existingAdmin = userRepository.findByEmail("admin@tastetrack.com");
+            Optional<User> existingAdmin = userRepository.findByEmail("admin@eat2day.com");
             
             User admin;
             if (existingAdmin.isPresent()) {
@@ -53,7 +53,7 @@ public class AdminSetupController {
                 response.put("message", "Admin user already exists, updating password");
             } else {
                 admin = new User();
-                admin.setEmail("admin@tastetrack.com");
+                admin.setEmail("admin@eat2day.com");
                 admin.setFirstName("Admin");
                 admin.setLastName("User");
                 admin.setPhone("+1 (555) 000-0000");
@@ -69,7 +69,7 @@ public class AdminSetupController {
             
             userRepository.save(admin);
             
-            response.put("email", "admin@tastetrack.com");
+            response.put("email", "admin@eat2day.com");
             response.put("password", plainPassword);
             response.put("passwordHash", hashedPassword);
             response.put("role", admin.getRole().name());
