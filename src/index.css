@@ -1,0 +1,426 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+
+    /* Vibrant orange for food ordering - appetite-stimulating */
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Fresh green for accents */
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+
+    /* Warm yellow for highlights */
+    --accent: 43 100% 50%;
+    --accent-foreground: 20 14.3% 4.1%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 24 95% 53%;
+
+    --radius: 0.75rem;
+
+    /* Food ordering specific colors */
+    --hero-gradient-start: 24 95% 53%;
+    --hero-gradient-end: 14 100% 57%;
+    --success: 142 76% 36%;
+    --warning: 43 100% 50%;
+    --info: 221 83% 53%;
+    
+    /* Shadows and effects */
+    --shadow-sm: 0 1px 2px 0 hsl(20 14.3% 4.1% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(20 14.3% 4.1% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(20 14.3% 4.1% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(20 14.3% 4.1% / 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 24 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 60 4.8% 95.9%;
+    --sidebar-accent-foreground: 20 14.3% 4.1%;
+    --sidebar-border: 20 5.9% 90%;
+    --sidebar-ring: 24 95% 53%;
+  }
+
+  .dark {
+    /* Rich dark background with warm undertones */
+    --background: 240 10% 8%;
+    --foreground: 0 0% 98%;
+
+    /* Elevated card surfaces with subtle warmth */
+    --card: 240 8% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 8% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Vibrant orange-red for food ordering - more saturated for dark mode */
+    --primary: 16 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Bright emerald green for accents - pops on dark background */
+    --secondary: 142 76% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted backgrounds with better contrast */
+    --muted: 240 6% 18%;
+    --muted-foreground: 240 5% 70%;
+
+    /* Golden yellow for highlights - warmer and more appetizing */
+    --accent: 45 100% 55%;
+    --accent-foreground: 240 10% 8%;
+
+    /* Softer red for destructive actions */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Subtle borders with better visibility */
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 16 100% 60%;
+
+    /* Food ordering specific colors for dark mode */
+    --hero-gradient-start: 16 100% 60%;
+    --hero-gradient-end: 30 100% 55%;
+    --success: 142 76% 45%;
+    --warning: 45 100% 55%;
+    --info: 221 83% 60%;
+
+    /* Sidebar with slightly different tone */
+    --sidebar-background: 240 8% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 16 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 6% 20%;
+    --sidebar-ring: 16 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--hero-gradient-start)) 0%, hsl(var(--hero-gradient-end)) 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-food-card {
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.25);
+  }
+
+  .dark .shadow-food-card {
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.3), 0 0 40px -10px hsl(var(--primary) / 0.15);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced glow effects for dark mode */
+  .dark .gradient-hero {
+    box-shadow: 0 0 80px -20px hsl(var(--primary) / 0.4);
+  }
+
+  /* ========== CARD ANIMATIONS & HOVER EFFECTS ========== */
+
+  /* Smooth card lift animation */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px -8px hsl(var(--primary) / 0.3);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 12px 40px -8px hsl(var(--primary) / 0.4), 0 0 60px -15px hsl(var(--primary) / 0.2);
+  }
+
+  /* Card with border glow on hover */
+  .card-glow {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .card-glow:hover::before {
+    opacity: 0.6;
+  }
+
+  .card-glow:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  /* Shimmer effect for cards */
+  .card-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .card-shimmer:hover::after {
+    left: 100%;
+  }
+
+  /* Pulse animation for featured items */
+  .card-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px hsl(var(--primary) / 0);
+    }
+  }
+
+  /* Image zoom on card hover */
+  .image-zoom-hover {
+    overflow: hidden;
+  }
+
+  .image-zoom-hover img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .image-zoom-hover:hover img {
+    transform: scale(1.15);
+  }
+
+  /* Rotate and scale on hover */
+  .card-rotate-scale {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card-rotate-scale:hover {
+    transform: scale(1.05) rotate(1deg);
+  }
+
+  /* Slide up content on hover */
+  .slide-up-content {
+    position: relative;
+  }
+
+  .slide-up-content .content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .slide-up-content:hover .content-overlay {
+    transform: translateY(0);
+  }
+
+  /* Bounce animation */
+  .animate-bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Slide in from left */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Slide in from right */
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Scale in animation */
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Stagger animation for lists */
+  .stagger-item {
+    opacity: 0;
+    animation: staggerFadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes staggerFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Floating animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Glow pulse for buttons */
+  .button-glow-pulse {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-glow-pulse::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: hsl(var(--primary-foreground) / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .button-glow-pulse:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+}
