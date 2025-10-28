@@ -93,7 +93,7 @@ const AdminLogin = () => {
           
           <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
-              Default credentials: admin@eat2day.com / password
+              Default credentials: admin@eat2day.com  / password
             </p>
           </div>
         </CardContent>
