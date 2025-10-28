@@ -118,13 +118,13 @@ INSERT INTO users (first_name, last_name, email, password, phone, role) VALUES
 -- Password for both users is: password
 
 INSERT INTO restaurants (id, name, cuisine, rating, delivery_time, min_order, image, address, is_open) VALUES
-(1, 'Nonna\'s Kitchen', 'Italian', 4.8, '30-40 min', 20.00, 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop', '123 Pasta Lane, Rome', TRUE),
-(2, 'Sakura Sushi', 'Japanese', 4.9, '25-35 min', 25.00, 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&h=600&fit=crop', '456 Cherry Blossom Ave, Kyoto', TRUE),
-(3, 'Grill & Co.', 'American', 4.6, '20-30 min', 15.00, 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop', '789 Freedom St, New York', TRUE),
-(4, 'Green Bites', 'Healthy', 4.7, '15-25 min', 12.00, 'https://images.unsplash.com/photo-1490645935967-10de6ba17021?w=800&h=600&fit=crop', '321 Wellness Rd, California', TRUE),
-(5, 'El Gato Loco', 'Mexican', 4.5, '20-30 min', 10.00, 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=600&fit=crop', '567 Sombrero Blvd, Mexico City', TRUE),
-(6, 'Thai Orchid', 'Thai', 4.8, '25-35 min', 18.00, 'https://images.unsplash.com/photo-1563241527-540e1b8f2542?w=800&h=600&fit=crop', '890 Elephant St, Bangkok', TRUE),
-(7, 'Mumbai Palace', 'Indian', 4.9, '30-40 min', 22.00, 'https://images.unsplash.com/photo-1589301773859-34462d1743e8?w=800&h=600&fit=crop', '234 Taj Mahal Lane, Mumbai', TRUE),
+(1,'Luigi''s Italian Kitchen', 'Italian', 4.5, '25-35 min', 15.00, 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop', '123 Main St, Downtown', TRUE),
+(2, 'Sakura Sushi', 'Japanese', 4.9, '25-35 min', 25.00, 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&h=600&fit=crop', '456 Cherry Blossom Ave, Kyoto', TRUE),
+(3, 'Grill & Co.', 'American', 4.6, '20-30 min', 15.00, 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&h=600&fit=crop', '789 Freedom St, New York', TRUE),
+(4, 'Green Bites', 'Healthy', 4.7, '15-25 min', 12.00, 'https://images.unsplash.com/photo-1498837167922-ddd27525bf8642?w=800&h=600&fit=crop', '321 Wellness Rd, California', TRUE),
+(5, 'El Gato Loco', 'Mexican', 4.5, '20-30 min', 10.00, 'https://images.unsplash.com/photo-1552332386-f8dd00645070?w=800&h=600&fit=crop', '567 Sombrero Blvd, Mexico City', TRUE),
+(6, 'Thai Orchid', 'Thai', 4.8, '25-35 min', 18.00, 'https://images.unsplash.com/photo-1626736198443-b4b9b47a4d69?w=800&h=600&fit=crop', '890 Elephant St, Bangkok', TRUE),
+(7, 'Mumbai Palace', 'Indian', 4.9, '30-40 min', 22.00, 'https://unsplash.com/photos/a-large-building-with-a-red-dome-on-top-of-it-AZr0Zf4IPfs', 'x234 Taj Mahal Lane, Mumbai', TRUE),
 (8, 'The Pitmaster', 'BBQ', 4.7, '35-45 min', 25.00, 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&h=600&fit=crop', '456 Smokey Ave, Texas', TRUE),
 (9, 'Saigon Pho', 'Vietnamese', 4.8, '25-35 min', 15.00, 'https://images.unsplash.com/photo-1585109649234-3968e7a4a5f2?w=800&h=600&fit=crop', '101 Pho St, Ho Chi Minh', TRUE),
 (10, 'Olympus Grill', 'Greek', 4.6, '30-40 min', 18.00, 'https://images.unsplash.com/photo-1505253716362-af78986b5b97?w=800&h=600&fit=crop', '202 Parthenon Rd, Athens', TRUE),
@@ -155,7 +155,7 @@ INSERT INTO menu_items (name, description, price, image, category, restaurant_id
 ('New York Strip Steak', 'A juicy 12oz steak served with mashed potatoes and asparagus', 32.99, 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&h=400&fit=crop', 'Main Course', 3, FALSE, 4.9),
 ('Clam Chowder', 'Creamy New England style clam chowder in a sourdough bread bowl', 11.99, 'https://images.unsplash.com/photo-1541592106381-b5883c288533?w=500&h=400&fit=crop', 'Soups', 3, FALSE, 4.8),
 ('Cobb Salad', 'Mixed greens with chicken, bacon, avocado, egg, and blue cheese', 16.99, 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=500&h=400&fit=crop', 'Salads', 3, FALSE, 4.7),
-('Apple Pie', 'Classic American apple pie with a scoop of vanilla ice cream', 8.99, 'https://images.unsplash.com/photo-1535146034234-9372a864a284?w=500&h=400&fit=crop', 'Desserts', 3, TRUE, 4.8),
+('Apple Pie', 'Classic American apple pie with a scoop of vanilla ice cream', 8.99, 'https://images.unsplash.com/photo-1535146034234-03518883512d?w=500&h=400&fit=crop', 'Desserts', 3, TRUE, 4.8),
 ('Buffalo Wings', 'Spicy chicken wings served with celery and blue cheese dressing', 13.99, 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=500&h=400&fit=crop', 'Appetizers', 3, FALSE, 4.6),
 ('Reuben Sandwich', 'Corned beef, Swiss cheese, sauerkraut, and Russian dressing on rye', 15.99, 'https://images.unsplash.com/photo-1625194659632-545c55b5b8f4?w=500&h=400&fit=crop', 'Sandwiches', 3, FALSE, 4.8),
 
@@ -197,7 +197,7 @@ INSERT INTO menu_items (name, description, price, image, category, restaurant_id
 
 -- The Pitmaster (Restaurant 8)
 ('St. Louis Style Ribs', 'Dry-rubbed and slow-smoked ribs with a tangy BBQ sauce', 24.99, 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500&h=400&fit=crop', 'BBQ', 8, FALSE, 4.9),
-('Smoked Sausage', 'Spicy smoked sausage served with pickles, onions, and mustard', 14.99, 'https://images.unsplash.com/photo-1558030006-450675393462?w=500&h=400&fit=crop', 'BBQ', 8, FALSE, 4.7),
+('Smoked Sausage', 'Spicy smoked sausage served with pickles, onions, and mustard', 14.99, 'https://images.unsplash.com/photo-1558030006-45067539952?w=500&h=400&fit=crop', 'BBQ', 8, FALSE, 4.7),
 ('Burnt Ends', 'Crispy and flavorful chunks of smoked brisket', 19.99, 'https://images.unsplash.com/photo-1544025162-d76694265947?w=500&h=400&fit=crop', 'BBQ', 8, FALSE, 5.0),
 ('Collard Greens', 'Slow-cooked collard greens with bacon and spices', 7.99, 'https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=500&h=400&fit=crop', 'Sides', 8, FALSE, 4.6),
 ('Banana Pudding', 'Creamy banana pudding with vanilla wafers and whipped cream', 8.99, 'https://images.unsplash.com/photo-1507066274042-8a683a1e6ffe?w=500&h=400&fit=crop', 'Desserts', 8, TRUE, 4.8),
@@ -214,7 +214,7 @@ INSERT INTO menu_items (name, description, price, image, category, restaurant_id
 -- Olympus Grill (Restaurant 10)
 ('Gyro Platter', 'Sliced lamb and beef with pita, tzatziki, and Greek salad', 17.99, 'https://images.unsplash.com/photo-1505253716362-af78986b5b97?w=500&h=400&fit=crop', 'Platters', 10, FALSE, 4.8),
 ('Spanakopita', 'Spinach and feta cheese pie in flaky phyllo dough', 9.99, 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=400&fit=crop', 'Appetizers', 10, TRUE, 4.7),
-('Moussaka', 'Layered eggplant and minced meat casserole with béchamel sauce', 19.99, 'https://images.unsplash.com/photo-1590004953392-5aba7ae2978e?w=500&h=600&fit=crop', 'Main Course', 10, FALSE, 4.9),
+('Moussaka', 'Layered eggplant and minced meat casserole with béchamel sauce', 19.99, 'https://images.unsplash.com/photo-1590004953392-5aba7ae2978e?w=500&h=400&fit=crop', 'Main Course', 10, FALSE, 4.9),
 ('Souvlaki', 'Grilled skewers of pork or chicken with lemon and oregano', 15.99, 'https://images.unsplash.com/photo-1626736198443-b4b9b47a4d69?w=500&h=400&fit=crop', 'Main Course', 10, FALSE, 4.8),
 ('Baklava', 'Sweet pastry with layers of phyllo, nuts, and honey', 7.99, 'https://images.unsplash.com/photo-1606755456206-b25206cde27e?w=500&h=400&fit=crop', 'Desserts', 10, TRUE, 4.9),
 

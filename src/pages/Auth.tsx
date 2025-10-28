@@ -270,7 +270,7 @@ const Auth = () => {
                       id="admin-email"
                       name="admin-email"
                       type="email"
-                      placeholder="admin@tastetrack.com"
+                      placeholder="admin@eat2day.com"
                       required
                     />
                   </div>
@@ -289,7 +289,7 @@ const Auth = () => {
                   </Button>
                   <div className="mt-4 p-3 bg-muted rounded-lg">
                     <p className="text-xs text-center text-muted-foreground">
-                      Default credentials: admin@tastetrack.com / password
+                      Default credentials: admin@eat2day.com / password
                     </p>
                   </div>
                 </form>

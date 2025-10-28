@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS deliveries (
 -- Insert sample data
 INSERT INTO users (first_name, last_name, email, password, phone, role) VALUES
 ('John', 'Doe', 'john.doe@example.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iwK7EnQW', '+1 (555) 123-4567', 'CUSTOMER'),
-('Jane', 'Smith', 'admin@tastetrack.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iwK7EnQW', '+1 (555) 234-5678', 'ADMIN');
+('Jane', 'Smith', 'admin@eat2day.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iwK7EnQW', '+1 (555) 234-5678', 'ADMIN');
 
 -- Password for both users is: password
 
