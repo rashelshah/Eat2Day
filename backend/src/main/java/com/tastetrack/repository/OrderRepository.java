@@ -41,4 +41,14 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
            "LEFT JOIN FETCH oi.menuItem " +
            "WHERE o.id = :id")
     Optional<Order> findByIdWithDetails(@Param("id") Long id);
+
+    @Query("SELECT DISTINCT o FROM Order o " +
+           "LEFT JOIN FETCH o.restaurant " +
+           "LEFT JOIN FETCH o.items oi " +
+           "LEFT JOIN FETCH oi.menuItem " +
+           "WHERE o.restaurant.id = :restaurantId " +
+           "ORDER BY o.orderDate DESC")
+    List<Order> findByRestaurantIdOrderByOrderDateDesc(@Param("restaurantId") Long restaurantId);
+
+    List<Order> findByRestaurantId(Long restaurantId);
 }

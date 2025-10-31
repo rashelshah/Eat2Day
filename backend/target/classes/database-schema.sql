@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
-    role ENUM('CUSTOMER', 'ADMIN') NOT NULL DEFAULT 'CUSTOMER',
+    role ENUM('CUSTOMER', 'ADMIN', 'VENDOR') NOT NULL DEFAULT 'CUSTOMER',
     enabled BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -29,8 +29,10 @@ CREATE TABLE IF NOT EXISTS restaurants (
     image VARCHAR(2048),
     address VARCHAR(255) NOT NULL,
     is_open BOOLEAN NOT NULL DEFAULT TRUE,
+    owner_id BIGINT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
 -- Menu items table
@@ -113,7 +115,7 @@ CREATE TABLE IF NOT EXISTS deliveries (
 -- Insert sample data
 INSERT INTO users (first_name, last_name, email, password, phone, role) VALUES
 ('John', 'Doe', 'john.doe@example.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iwK7EnQW', '+1 (555) 123-4567', 'CUSTOMER'),
-('Jane', 'Smith', 'admin@tastetrack.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iwK7EnQW', '+1 (555) 234-5678', 'ADMIN');
+('Jane', 'Smith', 'admin@eat2day.com', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iwK7EnQW', '+1 (555) 234-5678', 'ADMIN');
 
 -- Password for both users is: password
 

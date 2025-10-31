@@ -40,6 +40,6 @@ public class User {
     private boolean enabled = true;
 
     public enum Role {
-        CUSTOMER, ADMIN
+        CUSTOMER, ADMIN, VENDOR
     }
 }

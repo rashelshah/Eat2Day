@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart, User, Home, UtensilsCrossed, Package, Settings, LogOut } from 'lucide-react';
+import { ShoppingCart, User, Home, UtensilsCrossed, Package, Settings, LogOut, Store, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { useState, useEffect } from 'react';
@@ -78,6 +78,14 @@ const Navbar = ({ cartItemsCount }: NavbarProps) => {
               >
                 My Orders
               </Link>
+              <Link
+                to="/apply-restaurant"
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  location.pathname === '/apply-restaurant' ? 'text-primary' : 'text-muted-foreground'
+                }`}
+              >
+                Partner with Us
+              </Link>
             </div>
 
             <div className="flex items-center gap-3">
@@ -137,6 +145,12 @@ const Navbar = ({ cartItemsCount }: NavbarProps) => {
                 <Button variant="ghost" size="sm">
                   <Settings className="h-4 w-4 mr-2" />
                   Menu
+                </Button>
+              </Link>
+              <Link to="/admin/applications" className={location.pathname === '/admin/applications' ? 'text-primary' : ''}>
+                <Button variant="ghost" size="sm">
+                  <FileText className="h-4 w-4 mr-2" />
+                  Applications
                 </Button>
               </Link>
             </div>

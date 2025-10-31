@@ -25,6 +25,7 @@ const Auth = () => {
       const response = await authAPI.login(email, password);
       // Store token in localStorage
       localStorage.setItem('token', response.token);
+      localStorage.setItem('role', response.role);
       localStorage.setItem('user', JSON.stringify({
         email: response.email,
         firstName: response.firstName,
@@ -33,7 +34,15 @@ const Auth = () => {
       }));
       
       toast.success('Welcome back!');
-      navigate('/');
+      
+      // Redirect based on role
+      if (response.role === 'VENDOR') {
+        navigate('/vendor');
+      } else if (response.role === 'ADMIN') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (error: any) {
       toast.error(error.message || 'Login failed');
     } finally {

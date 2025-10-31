@@ -19,6 +19,11 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminRestaurants from "./pages/admin/Restaurants";
 import AdminOrders from "./pages/admin/Orders";
 import AdminMenu from "./pages/admin/Menu";
+import AdminApplications from "./pages/admin/Applications";
+import ApplyRestaurant from "./pages/ApplyRestaurant";
+import VendorDashboard from "./pages/vendor/VendorDashboard";
+import AddMenuItem from "./pages/vendor/AddMenuItem";
+import EditMenuItem from "./pages/vendor/EditMenuItem";
 import BackendTest from "./pages/BackendTest";
 import AuthTest from "./pages/AuthTest";
 import NotFound from "./pages/NotFound";
@@ -42,6 +47,7 @@ const App = () => (
             <Route path="/track/:orderId" element={<TrackOrder />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/apply-restaurant" element={<ApplyRestaurant />} />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
@@ -63,6 +69,28 @@ const App = () => (
             <Route path="/admin/menu" element={
               <ProtectedRoute requireAdmin={true}>
                 <AdminMenu />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/applications" element={
+              <ProtectedRoute requireAdmin={true}>
+                <AdminApplications />
+              </ProtectedRoute>
+            } />
+
+            {/* Vendor Routes */}
+            <Route path="/vendor" element={
+              <ProtectedRoute requireVendor={true}>
+                <VendorDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/vendor/menu/add" element={
+              <ProtectedRoute requireVendor={true}>
+                <AddMenuItem />
+              </ProtectedRoute>
+            } />
+            <Route path="/vendor/menu/edit/:id" element={
+              <ProtectedRoute requireVendor={true}>
+                <EditMenuItem />
               </ProtectedRoute>
             } />
 
