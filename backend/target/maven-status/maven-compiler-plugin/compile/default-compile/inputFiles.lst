@@ -4,6 +4,7 @@
 /Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/util/JwtUtil.java
 /Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/entity/User.java
 /Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/repository/PaymentRepository.java
+/Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/controller/VendorController.java
 /Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/config/GlobalExceptionHandler.java
 /Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/dto/AuthResponse.java
 /Users/rashelshah/Desktop/codes/React/Eat2Day/backend/src/main/java/com/tastetrack/controller/AuthController.java
