@@ -32,6 +32,9 @@ public class RestaurantApplicationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private jakarta.persistence.EntityManager entityManager;
+
     public RestaurantApplicationResponse submitApplication(RestaurantApplicationRequest request) {
         // Check if email already exists in applications
         if (applicationRepository.existsByEmail(request.getEmail())) {
@@ -122,22 +125,43 @@ public class RestaurantApplicationService {
             }
 
             vendor = userRepository.save(vendor);
+            entityManager.flush(); // Force immediate database write
             System.out.println("Vendor user saved with ID: " + vendor.getId());
+            System.out.println("Vendor email: " + vendor.getEmail());
+            System.out.println("Vendor role: " + vendor.getRole());
 
-            // Create restaurant entry
-            System.out.println("Creating restaurant entry...");
-            Restaurant restaurant = new Restaurant();
-            restaurant.setName(application.getName());
-            restaurant.setCuisine("Multi-Cuisine"); // Default, can be updated later
-            restaurant.setRating(0.0); // Default rating
-            restaurant.setDeliveryTime("30-45 mins"); // Default
-            restaurant.setMinOrder(0.0); // Default
-            restaurant.setAddress(application.getAddress());
-            restaurant.setIsOpen(true);
-            restaurant.setOwner(vendor);
+            // Check if restaurant already exists for this vendor
+            if (restaurantRepository.findByOwner(vendor).isPresent()) {
+                System.out.println("WARNING: Restaurant already exists for this vendor");
+            } else {
+                // Create restaurant entry
+                System.out.println("Creating restaurant entry...");
+                Restaurant restaurant = new Restaurant();
+                restaurant.setName(application.getName());
+                restaurant.setCuisine("Multi-Cuisine"); // Default, can be updated later
+                restaurant.setRating(0.0); // Default rating
+                restaurant.setDeliveryTime("30-45 mins"); // Default
+                restaurant.setMinOrder(0.0); // Default
+                restaurant.setAddress(application.getAddress());
+                restaurant.setIsOpen(true);
+                restaurant.setOwner(vendor);
+                
+                System.out.println("Restaurant owner set to vendor ID: " + vendor.getId());
 
-            restaurant = restaurantRepository.save(restaurant);
-            System.out.println("Restaurant created with ID: " + restaurant.getId());
+                restaurant = restaurantRepository.save(restaurant);
+                entityManager.flush(); // Force immediate database write with owner_id
+                entityManager.refresh(restaurant); // Reload from database to verify
+                System.out.println("Restaurant created with ID: " + restaurant.getId());
+                System.out.println("Restaurant name: " + restaurant.getName());
+                System.out.println("Restaurant owner ID: " + (restaurant.getOwner() != null ? restaurant.getOwner().getId() : "NULL"));
+                
+                // Verify the restaurant was saved correctly
+                Restaurant verifyRestaurant = restaurantRepository.findByOwner(vendor).orElse(null);
+                if (verifyRestaurant == null) {
+                    throw new RuntimeException("Failed to save restaurant - verification failed");
+                }
+                System.out.println("Restaurant verification successful - ID: " + verifyRestaurant.getId());
+            }
 
             // Update application status
             System.out.println("Updating application status...");

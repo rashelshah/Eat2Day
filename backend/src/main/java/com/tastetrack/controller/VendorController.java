@@ -311,6 +311,66 @@ public class VendorController {
     }
 
     /**
+     * Admin endpoint - Create restaurant for a vendor (emergency fix)
+     */
+    @PostMapping("/admin/create-restaurant-for-vendor")
+    public ResponseEntity<?> createRestaurantForVendor(
+            @RequestHeader("Authorization") String authHeader,
+            @RequestBody Map<String, Object> request) {
+        try {
+            // Validate admin token
+            String token = authHeader.substring(7);
+            if (!jwtUtil.validateToken(token)) {
+                throw new RuntimeException("Invalid or expired token");
+            }
+            String role = jwtUtil.getRoleFromToken(token);
+            if (!"ADMIN".equals(role)) {
+                throw new RuntimeException("Admin privileges required");
+            }
+
+            String vendorEmail = (String) request.get("vendorEmail");
+            String restaurantName = (String) request.get("restaurantName");
+            String address = (String) request.get("address");
+
+            User vendor = userRepository.findByEmail(vendorEmail)
+                    .orElseThrow(() -> new RuntimeException("Vendor not found"));
+
+            if (vendor.getRole() != User.Role.VENDOR) {
+                throw new RuntimeException("User is not a vendor");
+            }
+
+            // Check if restaurant already exists
+            if (restaurantRepository.findByOwner(vendor).isPresent()) {
+                throw new RuntimeException("Restaurant already exists for this vendor");
+            }
+
+            // Create restaurant
+            Restaurant restaurant = new Restaurant();
+            restaurant.setName(restaurantName);
+            restaurant.setCuisine("Multi-Cuisine");
+            restaurant.setRating(0.0);
+            restaurant.setDeliveryTime("30-45 mins");
+            restaurant.setMinOrder(0.0);
+            restaurant.setAddress(address);
+            restaurant.setIsOpen(true);
+            restaurant.setOwner(vendor);
+
+            restaurant = restaurantRepository.save(restaurant);
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("message", "Restaurant created successfully");
+            response.put("restaurant", restaurant);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("success", false);
+            error.put("message", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+    }
+
+    /**
      * Validate vendor token and return email
      */
     private String validateVendorToken(String authHeader) {
